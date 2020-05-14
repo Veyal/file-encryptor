@@ -1,0 +1,7 @@
+{
+  "extension": ".rawr",
+  "target_extension": [".xlsx", ".docx", ".txt", ".zip", ".pdf", ".html"],
+  "target_directory": "",
+  "iterate_folder": true,
+  "target_server": "http://localhost:3000/"
+}
