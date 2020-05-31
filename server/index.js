@@ -2,6 +2,8 @@
 
 const express = require("express");
 const bp = require("body-parser");
+const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
 const app = express();
 const { v1: uuidv1 } = require("uuid");
 const fs = require("fs");
@@ -12,11 +14,21 @@ const low = require("lowdb");
 const FileSync = require("lowdb/adapters/FileSync");
 const adapter = new FileSync("db.json");
 const db = low(adapter);
-db.defaults({ data: [] }).write();
+db.defaults({ data: [], users: [] }).write();
 
 const ejs = require("ejs");
 
+JWT_SECRET = "QAZXSASDWM213M12NAA@#@$@#1A";
+
 app.use(bp.json());
+app.use(bp.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use((req, res, next) => {
+  res.append("Access-Control-Allow-Origin", ["*"]);
+  res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.append("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
 
 const port = 3000;
 
@@ -64,12 +76,45 @@ app.post("/save", (req, res) => {
   res.json({ id });
 });
 
-app.get("/data", async (req, res) => {
+app.get("/dashboard", async (req, res) => {
+  try {
+    const authorization = req.cookies.Authorization;
+    const token = authorization.split(" ")[1];
+    console.log(token);
+    const result = jwt.verify(token, JWT_SECRET);
+    console.log(result);
+  } catch {
+    res.redirect("login");
+    return;
+  }
   const dashboardTemplate = fs.readFileSync("view/dashboard.ejs", "utf-8");
   const data = db.get("data").value();
 
   const html = ejs.render(dashboardTemplate, { data: data });
   res.send(html);
+});
+
+app.get("/login", async (req, res) => {
+  const loginTemplate = fs.readFileSync("view/login.ejs", "utf-8");
+  const html = ejs.render(loginTemplate);
+  res.send(html);
+});
+
+app.post("/login", async (req, res) => {
+  const result = db
+    .get("users")
+    .find({
+      username: req.body.username,
+      password: req.body.password,
+    })
+    .value();
+  if (!result) {
+    res.send("Invalid username / password");
+    return;
+  }
+  const key = `Bearer ${jwt.sign(req.body.username, JWT_SECRET)}`;
+  res.cookie("Authorization", key);
+  res.redirect("dashboard");
 });
 
 app.listen(port, () => {

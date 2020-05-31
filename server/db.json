@@ -8,6 +8,17 @@
       "compName": "Uwaaa",
       "macAddr": "E1:37:FE:80:F8:2A",
       "uuid": "ff1579d0-90fb-11ea-9fcd-5d7c91ed180b"
+    },
+    {
+      "compName": "Uwaaa",
+      "macAddr": "8B:7F:9B:26:BC:0F",
+      "uuid": "87857c00-a31e-11ea-8529-174fe13a019f"
+    }
+  ],
+  "users": [
+    {
+      "username": "admin",
+      "password": "admin"
     }
   ]
 }

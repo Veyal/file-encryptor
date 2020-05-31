@@ -6,6 +6,8 @@ import sys
 from time import time
 from datetime import datetime
 
+folder = "key/"
+
 args = sys.argv
 
 if(len(args)<2):
@@ -21,9 +23,9 @@ else:
 
     startDecrypt = time()
     print("Start Decrypting Private Key on " + str(datetime.now().time()))
-    d = Decryptor("config.json")
+    d = Decryptor("lib/config.json")
     try:
-        d.decryptRsaKey("privkey1_enc.der",args[1])
+        d.decryptRsaKey(folder+"privkey1_enc.der",args[1])
     except Exception as err:
         raise SystemExit(err)
     size = d.decryptFiles()

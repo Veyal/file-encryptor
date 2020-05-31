@@ -5,12 +5,14 @@ from encryptor import Encryptor
 from time import time
 from datetime import datetime
 
+folder = "key/"
+
 #Record Start Time
 start = time()
 print("Start process on "+ str(datetime.now().time()))
 
-e = Encryptor("config.json")
-size = e.encryptFiles()
+e = Encryptor("lib/config.json")
+size = e.encryptFiles(folder+'pubkey1.der')
 
 #Record End time
 end = time()

