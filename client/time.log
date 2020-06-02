@@ -25,3 +25,20 @@
 [SETUP] : 18.2219581604 seconds
 [ENCRYPT] : 17 bytes  | 0.00335597991943 seconds
 [DECRYPT] : 217 bytes  | 0.606482982635 seconds
+[SETUP] : 37.3131790161 seconds
+[SETUP] : 64.0242269039 seconds
+[SETUP] : 33.1681880951 seconds
+[ENCRYPT] : 17 bytes  | 0.00336790084839 seconds
+[DECRYPT] : 217 bytes  | 0.420237779617 seconds
+[ENCRYPT] : 17 bytes  | 0.00218296051025 seconds
+[DECRYPT] : 217 bytes  | 0.402307987213 seconds
+[ENCRYPT] : 17 bytes  | 0.00240182876587 seconds
+[DECRYPT] : 217 bytes  | 0.408452033997 seconds
+[ENCRYPT] : 17 bytes  | 0.0023729801178 seconds
+[DECRYPT] : 217 bytes  | 0.405566930771 seconds
+[ENCRYPT] : 17 bytes  | 0.00225901603699 seconds
+[DECRYPT] : 217 bytes  | 0.421422958374 seconds
+[ENCRYPT] : 17 bytes  | 0.00204801559448 seconds
+[DECRYPT] : 217 bytes  | 0.404285907745 seconds
+[ENCRYPT] : 17 bytes  | 0.00202608108521 seconds
+[DECRYPT] : 217 bytes  | 0.397453784943 seconds

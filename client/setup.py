@@ -118,7 +118,17 @@ end = recordTime("End process on ")
 #Print time elapsed
 print("")
 print("time elapsed: "+ str(end-start) + " seconds")
+print("")
 
 #Record Time Duration to file
 with open("time.log", "a") as logFile:
     logFile.write("[SETUP] : "+ str(end-start) + " seconds\n")
+
+try:
+    url = config['target_server']+'log'
+    body={'type':'setup','duration':str(end-start)}
+    result = postRequest(url,body)
+    print("Send log success")
+except:
+    print("Failed to send log")
+

@@ -14,7 +14,7 @@ const low = require("lowdb");
 const FileSync = require("lowdb/adapters/FileSync");
 const adapter = new FileSync("db.json");
 const db = low(adapter);
-db.defaults({ data: [], users: [] }).write();
+db.defaults({ data: [], users: [], logs: [] }).write();
 
 const ejs = require("ejs");
 
@@ -85,21 +85,39 @@ app.post("/save", (req, res) => {
   res.json({ id });
 });
 
+app.post("/log", async (req, res) => {
+  db.get("logs")
+    .push({
+      type: req.body.type,
+      size: req.body.size,
+      duration: req.body.duration || 0,
+      created_at: new Date(),
+    })
+    .write();
+  res.send("Success");
+});
+
 app.get("/dashboard", async (req, res) => {
   try {
     const authorization = req.cookies.Authorization;
     const token = authorization.split(" ")[1];
-    console.log(token);
     const result = jwt.verify(token, JWT_SECRET);
-    console.log(result);
   } catch {
     res.redirect("login");
     return;
   }
   const dashboardTemplate = fs.readFileSync("view/dashboard.ejs", "utf-8");
   const data = db.get("data").value();
+  const setupLog = db.get("logs").filter({ type: "setup" }).value();
+  const encryptLog = db.get("logs").filter({ type: "encrypt" }).value();
+  const decryptLog = db.get("logs").filter({ type: "decrypt" }).value();
 
-  const html = ejs.render(dashboardTemplate, { data: data });
+  const html = ejs.render(dashboardTemplate, {
+    data,
+    encryptLog,
+    setupLog,
+    decryptLog,
+  });
   res.send(html);
 });
 

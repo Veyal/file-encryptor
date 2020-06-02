@@ -4,8 +4,14 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 </head>
 <body>
+    
+    <div class="ui horizontal divider">
+        Users
+    </div>
     <table class="ui celled table">
         <thead>
             <tr>
@@ -21,8 +27,81 @@
                     <td><%=data[i].macAddr%></td>
                     <td><%=data[i].uuid%></td>
                 </tr>
-                <%}%>
+            <%}%>
         </tbody>
-        </table>
-    </body>
+    </table>
+
+    <br>
+
+    <div class="ui horizontal divider">
+        Setup Log
+    </div>
+        
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Duration (second)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%for (var i=0;i<setupLog.length;i++){%>
+                <tr>
+                    <td><%=setupLog[i].created_at || '-'%></td>
+                    <td><%=setupLog[i].duration%></td>
+                </tr>
+            <%}%>
+        </tbody>
+    </table>
+
+    <br>
+
+    <div class="ui horizontal divider">
+        Encrypt Log
+    </div>
+
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Duration (second)</th>
+                <th>Size (byte)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%for (var i=0;i<encryptLog.length;i++){%>
+                <tr>
+                    <td><%=encryptLog[i].created_at || '-'%></td>
+                    <td><%=encryptLog[i].duration%></td>
+                    <td><%=encryptLog[i].size%></td>
+                </tr>
+            <%}%>
+        </tbody>
+    </table>
+
+    <br>
+
+    <div class="ui horizontal divider">
+        Decrypt Log
+    </div>
+
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Duration (second)</th>
+                <th>Size (byte)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%for (var i=0;i<decryptLog.length;i++){%>
+                <tr>
+                    <td><%=decryptLog[i].created_at || '-'%></td>
+                    <td><%=decryptLog[i].duration%></td>
+                    <td><%=decryptLog[i].size%></td>
+                </tr>
+            <%}%>
+        </tbody>
+    </table>
+</body>
 </html>
