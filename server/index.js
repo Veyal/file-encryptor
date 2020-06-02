@@ -65,13 +65,22 @@ app.post("/save", (req, res) => {
   fs.writeFileSync(`privkey/${id}.der`, decoded);
 
   //Save to DB
-  db.get("data")
-    .push({
-      compName: req.body.compName,
-      macAddr: req.body.macAddr,
-      uuid: id,
-    })
-    .write();
+  let result = db.get("data").find({
+    compName: req.body.compName,
+    macAddr: req.body.macAddr,
+  });
+  if (result.value()) {
+    result = result.assign({ uuid: id }).write();
+  } else {
+    db.get("data")
+      .push({
+        compName: req.body.compName,
+        macAddr: req.body.macAddr,
+        uuid: id,
+      })
+      .write();
+  }
+
   //Return result uuid
   res.json({ id });
 });

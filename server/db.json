@@ -1,18 +1,9 @@
 {
   "data": [
     {
-      "macAddr": "E1:37:FE:80:F8:2A",
-      "uuid": "7eb89b00-90fb-11ea-8ac9-77b086fa78bf"
-    },
-    {
       "compName": "Uwaaa",
-      "macAddr": "E1:37:FE:80:F8:2A",
-      "uuid": "ff1579d0-90fb-11ea-9fcd-5d7c91ed180b"
-    },
-    {
-      "compName": "Uwaaa",
-      "macAddr": "8B:7F:9B:26:BC:0F",
-      "uuid": "87857c00-a31e-11ea-8529-174fe13a019f"
+      "macAddr": "A1:3C:0B:7C:6D:35",
+      "uuid": "ae3910c0-a4b6-11ea-9150-0920afc96553"
     }
   ],
   "users": [
