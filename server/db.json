@@ -1,56 +1,5 @@
 {
-  "data": [
-    {
-      "compName": "Uwaaa",
-      "macAddr": "A1:3C:0B:7C:6D:35",
-      "uuid": "3130c510-a4bf-11ea-b5fd-49a0d0eb2dbe"
-    }
-  ],
-  "users": [
-    {
-      "username": "admin",
-      "password": "admin"
-    }
-  ],
-  "logs": [
-    {
-      "type": "setup",
-      "duration": "3200",
-      "created_at": "2020-06-02T10:49:53.437Z"
-    },
-    {
-      "type": "setup",
-      "duration": "64.0242269039",
-      "created_at": "2020-06-02T10:51:57.697Z"
-    },
-    {
-      "type": "setup",
-      "duration": "33.1681880951",
-      "created_at": "2020-06-02T10:52:46.355Z"
-    },
-    {
-      "type": "encrypt",
-      "size": "17",
-      "duration": "0.00204801559448",
-      "created_at": "2020-06-02T10:56:22.806Z"
-    },
-    {
-      "type": "encrypt",
-      "size": "217",
-      "duration": "0.404285907745",
-      "created_at": "2020-06-02T10:57:33.507Z"
-    },
-    {
-      "type": "encrypt",
-      "size": "17",
-      "duration": "0.00202608108521",
-      "created_at": "2020-06-02T11:01:27.742Z"
-    },
-    {
-      "type": "decrypt",
-      "size": "217",
-      "duration": "0.397453784943",
-      "created_at": "2020-06-02T11:01:29.396Z"
-    }
-  ]
+  "data": [],
+  "users": [],
+  "logs": []
 }

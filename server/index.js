@@ -102,7 +102,7 @@ app.get("/dashboard", async (req, res) => {
     const authorization = req.cookies.Authorization;
     const token = authorization.split(" ")[1];
     const result = jwt.verify(token, JWT_SECRET);
-  } catch {
+  } catch (err) {
     res.redirect("login");
     return;
   }
