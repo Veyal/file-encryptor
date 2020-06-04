@@ -88,6 +88,8 @@ app.post("/save", (req, res) => {
 app.post("/log", async (req, res) => {
   db.get("logs")
     .push({
+      compName: req.body.compName,
+      macAddr: req.body.macAddr,
       type: req.body.type,
       size: req.body.size,
       duration: req.body.duration || 0,

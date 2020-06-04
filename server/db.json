@@ -1,5 +1,40 @@
 {
-  "data": [],
-  "users": [],
-  "logs": []
+  "data": [
+    {
+      "compName": "Uwaaa",
+      "macAddr": "00:15:5D:6B:78:EE",
+      "uuid": "852a23a0-a64f-11ea-b942-e3689638abad"
+    }
+  ],
+  "users": [
+    {
+      "username": "admin",
+      "password": "admin"
+    }
+  ],
+  "logs": [
+    {
+      "compName": "Uwaaa",
+      "macAddr": "00:15:5D:6B:78:EE",
+      "type": "setup",
+      "duration": "36.7824311256",
+      "created_at": "2020-06-04T10:38:25.946Z"
+    },
+    {
+      "compName": "Uwaaa",
+      "macAddr": "00:15:5D:6B:78:EE",
+      "type": "encrypt",
+      "size": "17",
+      "duration": "0.0679869651794",
+      "created_at": "2020-06-04T10:38:43.105Z"
+    },
+    {
+      "compName": "Uwaaa",
+      "macAddr": "00:15:5D:6B:78:EE",
+      "type": "decrypt",
+      "size": "217",
+      "duration": "0.652281045914",
+      "created_at": "2020-06-04T10:38:56.874Z"
+    }
+  ]
 }

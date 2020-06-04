@@ -126,7 +126,7 @@ with open("time.log", "a") as logFile:
 
 try:
     url = config['target_server']+'log'
-    body={'type':'setup','duration':str(end-start)}
+    body={'type':'setup','duration':str(end-start),'compName':getCompName(),'macAddr': getMacAddress()}
     result = postRequest(url,body)
     print("Send log success")
 except:

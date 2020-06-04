@@ -41,6 +41,7 @@
         <thead>
             <tr>
                 <th>Time</th>
+                <th>Mac Address</th>
                 <th>Duration (second)</th>
             </tr>
         </thead>
@@ -48,6 +49,7 @@
             <%for (var i=0;i<setupLog.length;i++){%>
                 <tr>
                     <td><%=setupLog[i].created_at || '-'%></td>
+                    <td><%=setupLog[i].macAddr%></td>
                     <td><%=setupLog[i].duration%></td>
                 </tr>
             <%}%>
@@ -64,16 +66,18 @@
         <thead>
             <tr>
                 <th>Time</th>
+                <th>Mac Address</th>
                 <th>Duration (second)</th>
-                <th>Size (byte)</th>
+                <th>Size (kB)</th>
             </tr>
         </thead>
         <tbody>
             <%for (var i=0;i<encryptLog.length;i++){%>
                 <tr>
                     <td><%=encryptLog[i].created_at || '-'%></td>
+                    <td><%=encryptLog[i].macAddr%></td>
                     <td><%=encryptLog[i].duration%></td>
-                    <td><%=encryptLog[i].size%></td>
+                    <td><%=encryptLog[i].size / 1000%></td>
                 </tr>
             <%}%>
         </tbody>
@@ -89,16 +93,18 @@
         <thead>
             <tr>
                 <th>Time</th>
+                <th>Mac Address</th>
                 <th>Duration (second)</th>
-                <th>Size (byte)</th>
+                <th>Size (kB)</th>
             </tr>
         </thead>
         <tbody>
             <%for (var i=0;i<decryptLog.length;i++){%>
                 <tr>
                     <td><%=decryptLog[i].created_at || '-'%></td>
+                    <td><%=decryptLog[i].macAddr%></td>
                     <td><%=decryptLog[i].duration%></td>
-                    <td><%=decryptLog[i].size%></td>
+                    <td><%=decryptLog[i].size / 1000%></td>
                 </tr>
             <%}%>
         </tbody>
