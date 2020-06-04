@@ -142,7 +142,10 @@ app.post("/login", async (req, res) => {
     return;
   }
   const key = `Bearer ${jwt.sign(req.body.username, JWT_SECRET)}`;
-  res.cookie("Authorization", key);
+  res.cookie("Authorization", key, {
+    maxAge: 15 * 60 * 1000,
+    httpOnly: true,
+  });
   res.redirect("dashboard");
 });
 
