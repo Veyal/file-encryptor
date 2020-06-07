@@ -4,6 +4,11 @@
       "compName": "Uwaaa",
       "macAddr": "00:15:5D:6B:78:EE",
       "uuid": "1c341360-a654-11ea-b64d-d36ac5c7ee2d"
+    },
+    {
+      "compName": "Uwaaa",
+      "macAddr": "DC:FB:48:92:6A:93",
+      "uuid": "e6ea0e80-a86a-11ea-8ce1-997eda295e1b"
     }
   ],
   "users": [
@@ -58,6 +63,29 @@
       "size": "217",
       "duration": "0.673346996307",
       "created_at": "2020-06-04T11:12:35.082Z"
+    },
+    {
+      "compName": "Uwaaa",
+      "macAddr": "DC:FB:48:92:6A:93",
+      "type": "setup",
+      "duration": "100.860999823",
+      "created_at": "2020-06-07T02:59:28.624Z"
+    },
+    {
+      "compName": "Uwaaa",
+      "macAddr": "DC:FB:48:92:6A:93",
+      "type": "encrypt",
+      "size": "17",
+      "duration": "0.021999835968",
+      "created_at": "2020-06-07T03:01:44.848Z"
+    },
+    {
+      "compName": "Uwaaa",
+      "macAddr": "DC:FB:48:92:6A:93",
+      "type": "decrypt",
+      "size": "217",
+      "duration": "2.6740000248",
+      "created_at": "2020-06-07T03:02:49.502Z"
     }
   ]
 }

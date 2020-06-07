@@ -88,7 +88,7 @@ class Decryptor:
             with open(file[:-extension_len], "wb") as fOut:
                 aes = AES.new(password,AES.MODE_CBC,IV)
                 fOut.write(self.unpad(aes.decrypt(message)))
-            os.remove(file)
+        os.remove(file)
 
     def decryptFiles(self):
         self.__addSuitableFile()

@@ -12,11 +12,11 @@ class RsaGenerator:
         self.__generatePublicKey(target_public)
 
     def __generatePrivateKey(self,target_private):
-        with(open(target_private,'w')) as priv:
+        with(open(target_private,'wb')) as priv:
             priv.write(str(self.key.exportKey('DER')))
 
     def __generatePublicKey(self,target_public):
-        with(open(target_public,'w')) as pub:
+        with(open(target_public,'wb')) as pub:
             pub.write(str(self.key.publickey().exportKey('DER')))
 
 # rsaGenerator = RsaGenerator(8192)

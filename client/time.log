@@ -48,3 +48,6 @@
 [SETUP] : 196.909485102 seconds
 [ENCRYPT] : 17 bytes  | 0.199146986008 seconds
 [DECRYPT] : 217 bytes  | 0.673346996307 seconds
+[SETUP] : 100.860999823 seconds
+[ENCRYPT] : 17 bytes  | 0.021999835968 seconds
+[DECRYPT] : 217 bytes  | 2.6740000248 seconds
