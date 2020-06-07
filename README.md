@@ -14,4 +14,4 @@ Simple File encryption using Wannacry logic as references
 ## Client
 
 - python2
-  - pyCrypto library
+  - pyCrypto library || pyCryptodome library (for branch cryptodome)
