@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const { v1: uuidv1 } = require("uuid");
 const fs = require("fs");
+const crypto = require("crypto");
 const util = require("util");
 const exec = util.promisify(require("child_process").execFile);
 
@@ -134,7 +135,10 @@ app.post("/login", async (req, res) => {
     .get("users")
     .find({
       username: req.body.username,
-      password: req.body.password,
+      password: crypto
+        .createHash("md5")
+        .update(req.body.password)
+        .digest("hex"),
     })
     .value();
   if (!result) {
